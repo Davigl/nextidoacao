@@ -1,54 +1,19 @@
-
-<section class= "asd">
-	<div class="nested-fields">
-		<h1>
-			<p class="flow-text center"> Telefone
-				<i class=" material-icons ">local_phone</i>
-			</p>
-		</h1>
-
-		<div class="container">
-			<div class= "row label">
-				<div class= "col s6">
-					<div class="field">
-						<%= f.label :numero, "Numero", class: "label" %>
-						<%= f.text_field :numero, class: "telefone_mask" %>		
+		<div class="nested-fields">
+			<div class="container">
+				<div class= "row">
+					<div class= "input-field col s6">
+						<i class="material-icons prefix">filter_3</i>
+						<%= f.number_field :codigo_area, placeholder: "DDD" %>
 					</div>
-				</div>
-
-				<div class= "col s6">
-					<div class="field">
-						<%= f.label :codigo_area, "DDD", class: "label" %>
-						<%= f.number_field :codigo_area %>
+					<div class="input-field col s6">
+						<i class="material-icons prefix">phone</i>
+						<%= f.text_field :numero, class: "telefone_mask", placeholder: "Número" %>	
+					</div>
+					<div class= "input-field col s12 right-align">
+						<%= link_to_remove_association '<i class="material-icons">remove</i>'.html_safe, f, class: ' btn-floating waves-effect waves-light red' %>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<button class='btn right btn-primary green lighten-2 ' onclick="asd()" type=button> Salvar Telefone </button>
-		<%= link_to_remove_association "Remover Telefone", f, class: 'btn btn-primary green lighten-2' %>
-	</div>
-	<br> <br>
-</section>
-
-<script type="text/javascript">
-	var num = -1;
-	function incrementa(n){
-		n = n + 1;
-		num =
-		return num;
-	}
-
-}
-</script>
-
-
-<section class="idtelef" style= "display: none;">
-	<div class="container">
-		<div class= "row label">
-			<i class="material-icons">local_phone</i>
-			<button class='btn right btn-primary green lighten-2' onclick="asd3(incrementa(num))" type=button> Editar </button>
-		</p>
-	</div>
-</div>
-</section>
+ 

@@ -8,14 +8,14 @@ class CadastrosController < ApplicationController
   # GET /cadastros.json
 
   def index
-    @cadastros = current_user.instituicao.cadastros
+    @search_query = params[:q]
+    @cadastros = current_user.instituicao.cadastros.search(@search_query)
     @cadastros = @cadastros.page params[:page]
   end
 
   # GET /cadastros/1
   # GET /cadastros/1.json
-  def show
-  end
+  def show; end
 
   # GET /cadastros/new
   def new
@@ -23,8 +23,7 @@ class CadastrosController < ApplicationController
   end
 
   # GET /cadastros/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /cadastros
   # POST /cadastros.json
@@ -32,6 +31,8 @@ class CadastrosController < ApplicationController
     @cadastro = Cadastro.new(cadastro_params)
     @cadastro.instituicao_id = current_user.instituicao_id
     @cadastro.user_id = current_user.id
+    @cadastro.autor = current_user.login
+    @cadastro.doador_ativo = true
     
     respond_to do |format|
       if @cadastro.save

@@ -11,9 +11,13 @@ class SessionsController < Devise::SessionsController
 	end
 
 	def destroy
-		signed_in = signed_in?(resource_name)
-		sign_out(resource_name)
-		redirect_to user_not_actived_path
+		if !(current_user.ativo?)
+			sign_out(resource_name)
+			redirect_to user_not_actived_path
+		else
+			sign_out(resource_name)
+			redirect_to root_path
+		end
 	end
 
 	private
@@ -21,6 +25,7 @@ class SessionsController < Devise::SessionsController
 	def require_activated
 		if user_signed_in?
 			if current_user.activate_for_authentication?
+				redirect_to cadastros_path
 				set_flash_message :notice, :ativo
 			else
 				destroy

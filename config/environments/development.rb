@@ -34,8 +34,8 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   config.action_mailer.smtp_settings = {
-    :user_name => 'nextipro2@gmail.com',
-    :password => 'AdminEnel2017',
+    :user_name => ENV["GMAIL_USERNAME"],
+    :password =>  ENV["GMAIL_PASSWORD"],
     :address => 'smtp.gmail.com',
     :port => 587,
     :authentication => :plain,

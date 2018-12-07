@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="author" content="Coderthemes">
+
+  <title>Colaboradores</title>
+
+  <%= favicon_link_tag 'favicon.png'%>
+
+  <link href="/assets/dashboard/switchery.min.css" rel="stylesheet" />
+  <link href="/assets/dashboard/jquery.circliful.css" rel="stylesheet" type="text/css" />
+
+  <link href="/assets/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="/assets/dashboard/style.css" rel="stylesheet" type="text/css">
+
+  <script src="/assets/dashboard/modernizr.min.js"></script>
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+</head>
+
+
+<body class="fixed-left">
+
+  <%= render '/layouts/nav_bar' %>
+
+  <%= render '/layouts/side_bar' %>
+  
+  <div class="content-page">
+    <!-- Start content -->
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="card-box">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="m-b-30">
+                    <% if current_user.admin %>
+                    <%= link_to 'Adicionar', new_colaborador_path, class: 'btn btn-primary waves-light' %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="card-box">
+                    <h4 class="header-title m-t-0">Últimos colaboradores</h4>
+                    <p class="text-muted m-b-25 font-13">
+
+                    </p>
+
+                    <div class="table-responsive">
+                      <table class="table mb-0">
+                        <thead>
+                          <tr>
+                            <th>Login</th>
+                            <th>Email</th>
+                            <th>Total de cadastros</th>
+                            <th>Total arrecadado</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% @colaboradores.each do |colaborador| %>
+                          <tr>
+                            <td><%= colaborador.login %></td>
+                            <td><%= colaborador.email %></td>
+                            <td><%= colaborador.cadastros.size %></td>
+                            <td>R$ <%= colaborador.cadastros.sum("valor") %></td>
+                          </tr>
+                          <% end %>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <!-- end col -8 -->
+                <div class="col-lg-4">
+                  <h3 class="header-title m-t-0" align="center"> TOP 3 COLABORADORES </h3>
+                  <% if @colaboradores_top3 != nil %>
+                  <% for i in 0..@colaboradores_top3.size-1 %>
+                  <% case i %>
+                  <% when 0 %>
+                  <div class="card-box widget-user">
+                    <div>
+                      <%= image_tag "gold.png", class: "img-responsive rounded-circle" %>
+                      <div class="wid-u-info">
+                        <h5 class="mt-0 m-b-5 font-16"><%= @colaboradores_top3[0].login %></h5>
+                        <p class="text-muted m-b-5 font-13"><%= @colaboradores_top3[0].email %></p>
+                        <small>Cadastros: </small><small class="text-warning"><b><%= @colaboradores_top3[0].cadastros.size %></b></small>
+                      </div>
+                    </div>
+                  </div>
+                  <% when 1 %>
+                  <div class="card-box widget-user">
+                    <div>
+                      <%= image_tag "plate.png", class: "img-responsive rounded-circle" %>
+                      <div class="wid-u-info">
+                        <h5 class="mt-0 m-b-5 font-16" ><%= @colaboradores_top3[1].login %></h5>
+                        <p class="text-muted m-b-5 font-13"><%= @colaboradores_top3[1].email %></p>
+                        <small>Cadastros: </small> <small class="text-warning"><b><%= @colaboradores_top3[1].cadastros.size %></b></small>
+                      </div>
+                    </div>
+                  </div>
+                  <% when 2 %>
+                  <div class="card-box widget-user">
+                    <div>
+                      <%= image_tag "bronze.png", class: "img-responsive rounded-circle" %>
+                      <div class="wid-u-info">
+
+                        <h5 class="mt-0 m-b-5 font-16"><%= @colaboradores_top3[i].login %></h5>
+                        <p class="text-muted m-b-5 font-13"><%= @colaboradores_top3[i].email %></p>
+                        <small>Cadastros: </small> <small class="text-warning"><b><%= @colaboradores_top3[i].cadastros.size %></b></small>
+                      </div>
+                    </div>
+                  </div>
+                  <% end %>
+                  <% end %>
+                  <% end %>
+                  
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      
+      <%= render '/layouts/javascripts' %>
+
+    </body>
+    </html>

@@ -95,7 +95,9 @@
 <div class="form-group text-right m-t-20">
   <div class="col-xs-6">
     <div class="actions">
-      <%= link_to 'Voltar', cadastros_path, class: 'btn float-right btn-primary waves-light' %>
+      <%= link_to 'Voltar', cadastros_path, class: 'btn float-left btn-primary waves-light' %>
+
+      <%= button_to 'Deletar', cadastro, method: :delete, class: 'btn float-right cor-botao-deletar' %>
     </div>  
   </div>
 </div>

@@ -1,11 +1,7 @@
 class PagesController < ApplicationController
 	def show
-    	if params[:page] == "teste"
-    		if not user_signed_in?
-    			redirect_to root_path
-    		else
-    			render template: "pages/#{params[:page]}", :layout => false
-    		end
+    	if params[:page] == "about"
+    		render template: "pages/#{params[:page]}", :layout => false
     	else
     		render template: "pages/#{params[:page]}"
     	end

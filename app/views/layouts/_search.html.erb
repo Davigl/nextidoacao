@@ -1,0 +1,24 @@
+
+
+<div class="row">
+  <div class="col-12">
+   <div style="margin-bottom: 50px !important;"> 
+     <div class="app-search">
+      <%= form_tag cadastros_path, method: :get, class: '' do |form| %>
+      <div class="row">
+        <div class="col-6">
+          <div> <h4 class="header-title"> Buscar <i class="fa fa-search"></i> </h4>  </div>
+          <br>
+        </div>
+      </div>
+      
+      <%= text_field_tag :q, @search_query, class: 'form-control', placeholder: 'Digite o ID cliente ENEL ou autor...' %>
+      <br>
+      <button type="submit" class="btn" style="display: none !important;">
+        <i class="fa fa-search"></i> 
+      </button>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>

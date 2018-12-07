@@ -1,7 +1,7 @@
-
-<div class="row">
-  <div class="col l6 s12 m10 push-l3 push-m1 baixo">
-    <div class="container transparente quadro fontes">
+<section class="section"></section>
+<div class="row" >
+  <div class="col l6 m10 push-l3 push-m1 card card-color">
+    <div class="container transparente fontes">
       <h3 class="center">[logo]</h3>
       <br>
       <br>
@@ -21,32 +21,32 @@
       <% if devise_mapping.rememberable? -%>
       <div class="field ">
         <%= f.check_box :remember_me,type:'checkbox',class:'filled-in',id:'teste' %>
-        <%= f.label 'Lembrar de mim', class: 'label', for: 'remember_me', for: 'teste' %>
+        <%= f.label 'Lembrar de mim', class: 'label', for: 'remember_me'%>
       </div>
       <% end -%>
       <br>
       <br>
+
+      <div class="actions left-align">
+        <% if current_page?('/login') %>
+          <%= link_to "Quero me cadastrar", cadastrar_instituicao_path, class: "white-text" %> 
+        <% end %>
+      </div>
+
       <div class="actions right-align">
         <%= f.submit "Entrar", class: 'waves-effect cor-botao btn' %>
       </div>
       <br>
       <br>
-      <div>
-        <% if current_page?('/login') %>
-          <%= link_to "Quero me cadastrar", cadastrar_instituicao_path, class: "right white-text" %> 
-        <% end %>  
-        <% if current_page?('/usuario_nextis/sign_in') %>
-          <%= link_to "Quero me cadastrar", new_usuario_nexti_registration_path, class: "right white-text" %> 
-        <% end %>
-      </div>
-      <% end %>
       
+      <% end %>
+ 
     </div>  
   </div>
 </div>
+
 <script>
  $(document).ready(function() {
   $('select').material_select();
 });
-
 </script>

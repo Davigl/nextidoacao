@@ -8,6 +8,8 @@
 
 	<title>Cadastros</title>
 
+	<%= favicon_link_tag 'favicon.png'%>
+
 	<link href="/assets/dashboard/switchery.min.css" rel="stylesheet" />
 
 	<link href="/assets/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -25,42 +27,7 @@
 		<%= render 'form', cadastro: @cadastro %>
 	</div>
 
-	<script>
-		var resizefunc = [];
-	</script>
-
-	<!-- Plugins  -->
-	<script src="/assets/dashboard/jquery.min.js"></script>
-	<script src="/assets/dashboard/popper.min.js"></script><!-- Popper for Bootstrap -->
-	<script src="/assets/dashboard/detect.js"></script>
-	<script src="/assets/dashboard/fastclick.js"></script>
-	<script src="/assets/dashboard/jquery.slimscroll.js"></script>
-	<script src="/assets/dashboard/jquery.blockUI.js"></script>
-	<script src="/assets/dashboard/waves.js"></script>
-	<script src="/assets/dashboard/wow.min.js"></script>
-	<script src="/assets/dashboard/jquery.nicescroll.js"></script>
-	<script src="/assets/dashboard/jquery.scrollTo.min.js"></script>
-	<script src="/assets/dashboard/switchery.min.js"></script>
-
-	<!-- Counter Up  -->
-	<script src="/assets/dashboard/jquery.waypoints.min.js"></script>
-	<script src="/assets/dashboard/jquery.counterup.min.js"></script>
-
-	<!-- circliful Chart -->
-	<script src="/assets/dashboard/jquery.circliful.min.js"></script>
-	<script src="/assets/dashboard/jquery.sparkline.min.js"></script>
-
-	<!-- skycons -->
-	<script src="/assets/dashboard/skycons.min.js" type="text/javascript"></script>
-
-	<!-- Page js  -->
-	<script src="/assets/dashboard/jquery.dashboard.js"></script>
-
-	<script src="/assets/dashboard/bootstrap.min.js"></script>
-
-	<!-- Custom main Js -->
-	<script src="/assets/dashboard/jquery.core.js"></script>
-	<script src="/assets/dashboard/jquery.app.js"></script>
+	 <%= render '/layouts/javascripts' %>
 
 </body>
 </html>

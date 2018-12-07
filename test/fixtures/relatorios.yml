@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  data_inicio: 2018-09-13
+  data_final: 2018-09-13
+  nome_arquivo: MyString
+  user_id: 1
+  instituicao_id: MyString
+
+two:
+  data_inicio: 2018-09-13
+  data_final: 2018-09-13
+  nome_arquivo: MyString
+  user_id: 1
+  instituicao_id: MyString

@@ -4,10 +4,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
-  <meta name="author" content="Coderthemes">
+  <meta name="author" content="Nextidoacao">
 
   <title>Cadastros</title>
+
+  <%= favicon_link_tag 'favicon.png'%>
 
   <link href="/assets/dashboard/switchery.min.css" rel="stylesheet" />
   <link href="/assets/dashboard/jquery.circliful.css" rel="stylesheet" type="text/css" />
@@ -18,211 +19,85 @@
   <script src="/assets/dashboard/modernizr.min.js"></script>
 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-
 </head>
 
 
 <body class="fixed-left">
 
-  <!-- Begin page -->
-  <div id="wrapper">
-
-    <!-- Top Bar Start -->
-    <div class="topbar">
-
-      <!-- LOGO -->
-      <div class="topbar-left">
-        <div class="text-center">
-          <a href="index.html" class="logo"><i class="fab fa-adn"></i> <span>[Instituição]</span></a>
-        </div>
-      </div>
-
-      <!-- Button mobile view to collapse sidebar menu -->
-      <nav class="navbar-custom">
-
-        <ul class="list-inline float-right mb-0">
-
-
-          <li class="list-inline-item dropdown notification-list">
-            <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
-            aria-haspopup="false" aria-expanded="false">
-            <%= image_tag "padrao.png", class: "rounded-circle" %>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right profile-dropdown " aria-labelledby="Preview">
-            <!-- item-->
-            <div class="dropdown-item noti-title">
-              <h5 class="text-overflow"><small>Welcome ! John</small> </h5>
-            </div>
-
-            <!-- item-->
-            <a href="javascript:void(0);" class="dropdown-item notify-item">
-              <i class="mdi mdi-account"></i> <span>Profile</span>
-            </a>
-
-            <!-- item-->
-            <a href="javascript:void(0);" class="dropdown-item notify-item">
-              <i class="mdi mdi-settings"></i> <span>Settings</span>
-            </a>
-
-            <!-- item-->
-            <a href="javascript:void(0);" class="dropdown-item notify-item">
-              <i class="mdi mdi-lock-open"></i> <span>Lock Screen</span>
-            </a>
-
-            <!-- item-->
-            <a href="javascript:void(0);" class="dropdown-item notify-item">
-              <i class="mdi mdi-logout"></i> <span>Logout</span>
-            </a>
-
-          </div>
-        </li>
-
-      </ul>
-
-      <ul class="list-inline menu-left mb-0">
-        <li class="float-left">
-          <button class="button-menu-mobile open-left waves-light waves-effect">
-            <i class="mdi mdi-menu"></i>
-          </button>
-        </li>
-        <li class="hide-phone app-search">
-          <form role="search" class="">
-            <input type="text" placeholder="Pesquisar..." class="form-control">
-            <a href="#"><i class="fa fa-search"></i></a>
-          </form>
-        </li>
-      </ul>
-
-    </nav>
-
-  </div>
-  <!-- Top Bar End -->
-
-
+  <%= render '/layouts/nav_bar' %>
+  
   <!-- ========== Left Sidebar Start ========== -->
 
-  <div class="left side-menu">
-    <div class="sidebar-inner slimscrollleft">
-      <!--- Divider -->
-      <div id="sidebar-menu">
-        <ul>
-          <li class="menu-title"> Menu </li>
+  <%= render '/layouts/side_bar' %>
 
-          <li>
-            <a href="index.html" class="waves-effect waves-primary"><i
-              class="fa fa-home"></i><span> Dashboard </span></a>
-            </li>
-          </ul>
-
-          <ul>
-            <li>
-              <a href="cadastros.html" class="waves-effect waves-primary"><i
-                class="far fa-address-card"></i><span> Cadastros </span></a>
-              </li>
-            </ul>
-            <div class="clearfix"></div>
-          </div>
-          <div class="clearfix"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="content-page">
-      <!-- Start content -->
-      <div class="content">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="card-box">
-                <div class="row">
-                  <div class="col-sm-6">
-                    <div class="m-b-30">
-                     <%= link_to 'Adicionar', new_cadastro_path, class: 'btn btn-primary waves-light' %>
-                   </div>
+  <div class="content-page">
+    <!-- Start content -->
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="card-box">
+              <div class="row">
+                <div class="col-12">
+                  <div class="m-b-30">
+                   <%= link_to 'Adicionar', new_cadastro_path, class: 'btn btn-primary waves-light' %>
                  </div>
-               </div>
-
-               <table class="table table-striped add-edit-table" id="datatable-editable">
-                <thead>
-                  <tr>
-                    <th>Status </th>
-                    <th>ID Cliente Enel</th>
-                    <th>Código Ocorrência</th>
-                    <th>Data do Cadastro</th>
-                    <th>Valor</th>
-                    <th>Parcelas</th>
-                    <th>Protocolo </th>
-                    <th>Ações </th>
-
-                  </tr>
-                </thead>
-
-                <tbody>
-                  <% @cadastros.each do |cadastro| %>
-
-                  <tr class="gradeX">
-                    <% if cadastro.doador_ativo %>
-                    <td> <i class="fas fa-user", style="color: green;"></i></td>
-                    <% else %>
-                    <td> <i class="fas fa-user", style="color: red;"></i></td>
-                    <% end %>
-                    <td> <%= cadastro.id_cliente_enel %> </td>
-                    <td> <%= cadastro.codigo_ocorrencia %> </td>
-                    <td> <%= post_date cadastro.data_ocorrencia %> </td>
-                    <td>R$ <%= cadastro.valor %> </td>
-                    <td> <%= cadastro.parcelas %> </td>
-                    <td> <%= cadastro.livre %> </td>
-                    <td class="actions">
-
-                     <%= link_to '<i class= "fas fa-eye"></i>'.html_safe, cadastro_path(cadastro), { class: 'on-default remove-row', 'data-original-title' => "Visualizar", 'data-toggle' => "tooltip", 'data-placement' => "top", 'title' => "" } %> 
-                      | 
-                      <%= link_to '<i class= "fas fa-edit"></i>'.html_safe, edit_cadastro_path(cadastro), { class: 'on-default remove-row', 'data-original-title' => "Editar", 'data-toggle' => "tooltip", 'data-placement' => "top", 'title' => "" } %> 
-                    </td>                
-                  </tr>
-                  <% end %>
-                </tbody>
-              </table>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <script>
-          var resizefunc = [];
-        </script>
+            <%= render '/layouts/search' %>
 
-        <!-- Plugins  -->
-        <script src="/assets/dashboard/jquery.min.js"></script>
-        <script src="/assets/dashboard/popper.min.js"></script><!-- Popper for Bootstrap -->
-        <script src="/assets/dashboard/bootstrap.min.js"></script>
-        <script src="/assets/dashboard/detect.js"></script>
-        <script src="/assets/dashboard/fastclick.js"></script>
-        <script src="/assets/dashboard/jquery.slimscroll.js"></script>
-        <script src="/assets/dashboard/jquery.blockUI.js"></script>
-        <script src="/assets/dashboard/waves.js"></script>
-        <script src="/assets/dashboard/wow.min.js"></script>
-        <script src="/assets/dashboard/jquery.nicescroll.js"></script>
-        <script src="/assets/dashboard/jquery.scrollTo.min.js"></script>
-        <script src="/assets/dashboard/switchery.min.js"></script>
+            <% if @cadastros.size == 0 %>
+            <strong style= "color: #2ab6ed";> Não há cadastros para exibir. </strong>
+            <% else %>
 
-        <!-- Counter Up  -->
-        <script src="/assets/dashboard/jquery.waypoints.min.js"></script>
-        <script src="/assets/dashboard/jquery.counterup.min.js"></script>
+            <table class="table table-striped add-edit-table" id="datatable-editable">
+              <thead>
+                <tr>
+                  <th>Status </th>
+                  <th>ID Cliente Enel</th>
+                  <th>Data do Cadastro</th>
+                  <th>Valor</th>
+                  <th>Parcelas</th>
+                  <th> Autor </th>
+                  <th>Ações </th>
+                </tr>
+              </thead>
 
-        <!-- circliful Chart -->
-        <script src="/assets/dashboard/jquery.circliful.min.js"></script>
-        <script src="/assets/dashboard/jquery.sparkline.min.js"></script>
+              <tbody>
+                <% @cadastros.each do |cadastro| %>
 
-        <!-- skycons -->
-        <script src="/assets/dashboard/skycons.min.js" type="text/javascript"></script>
+                <tr class="gradeX">
+                  <% if cadastro.doador_ativo %>
+                  <td> <i class="fas fa-user", style="color: #94cc6a;"></i></td>
+                  <% else %>
+                  <td> <i class="fas fa-user", style="color: #e03d28;"></i></td>
+                  <% end %>
+                  <td> <%= cadastro.id_cliente_enel %> </td>
+                  <td> <%= post_date cadastro.data_ocorrencia %> </td>
+                  <td>R$ <%= cadastro.valor %> </td>
+                  <td> <%= cadastro.parcelas %> </td>
+                  <td style="color: #2ab6ed;"> <strong><%= cadastro.autor %></strong> </td>
+                  <td class="actions">
 
-        <!-- Page js  -->
-        <script src="/assets/dashboard/jquery.dashboard.js"></script>
+                   <%= link_to '<i class= "fas fa-eye"></i>'.html_safe, cadastro_path(cadastro), { class: 'on-default remove-row', 'data-original-title' => "Visualizar", 'data-toggle' => "tooltip", 'data-placement' => "top", 'title' => "" } %> 
 
-        <!-- Custom main Js -->
-        <script src="/assets/dashboard/jquery.core.js"></script>
-        <script src="/assets/dashboard/jquery.app.js"></script>
-        <%= link_to_prev_page @cadastros, 'Página Anterior', class: 'btn float-left btn-primary waves-light' %>
-        <%= link_to_next_page @cadastros, 'Próxima Página', class: 'btn float-left btn-primary waves-light' %>
+                   <%= link_to '<i class= "fas fa-edit"></i>'.html_safe, edit_cadastro_path(cadastro), { class: 'on-default remove-row', 'data-original-title' => "Editar", 'data-toggle' => "tooltip", 'data-placement' => "top", 'title' => "" } %>  
+                 </td>                
+               </tr>
+               <% end %>
+             </tbody>
+           </table>
 
-      </body>
-      </html>
+           <% end %>
+
+         </div>
+       </div>
+     </div>
+    <%= render '/layouts/javascripts' %>
+    
+    <%= link_to_prev_page @cadastros, 'Página Anterior', class: 'btn float-left btn-primary waves-light' %>
+    <%= link_to_next_page @cadastros, 'Próxima Página', class: 'btn float-left btn-primary waves-light' %>
+
+  </body>
+  </html>

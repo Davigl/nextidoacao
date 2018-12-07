@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="author" content="Nextidoacao">
+
+  <%= favicon_link_tag 'favicon.png' %>
+
+  <title>Relatórios</title>
+
+  <link href="/assets/dashboard/switchery.min.css" rel="stylesheet" />
+  <link href="/assets/dashboard/jquery.circliful.css" rel="stylesheet" type="text/css" />
+
+  <link href="/assets/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="/assets/dashboard/style.css" rel="stylesheet" type="text/css">
+
+  <script src="/assets/dashboard/modernizr.min.js"></script>
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+</head>
+
+
+<body class="fixed-left">
+
+  <%= render '/layouts/nav_bar' %>
+  
+  <!-- ========== Left Sidebar Start ========== -->
+
+  <%= render '/layouts/side_bar' %>
+
+  <div class="content-page">
+    <!-- Start content -->
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="card-box">
+              <div class="row">
+                <div class="col-12">
+                  <div class="m-b-30">
+                   <%= link_to 'Emitir relatório',  new_relatorio_path, class: 'btn btn-primary waves-light' %>
+                 </div>
+               </div>
+             </div>
+
+             <% if @relatorios.size == 0 %>
+             <strong style= "color: #2ab6ed";> Não há relatórios para exibir. </strong>
+             <% else %>
+
+             <table class="table table-striped add-edit-table" id="datatable-editable">
+              <thead>
+                <tr>
+                 <th>Data início</th>
+                 <th>Data final</th>
+                 <th>Nome do arquivo</th>
+                 <th>Autor</th>
+                 <th>Ações</th>
+               </tr>
+             </thead>
+
+             <tbody>
+              <% @relatorios.each do |relatorio| %>
+
+              <tr class="gradeX">
+
+                <td> <%= post_date relatorio.data_inicio %> </td>
+                <td> <%= post_date relatorio.data_final %> </td>
+                <td> <%= relatorio.nome_arquivo %> </td>
+                <td> <%= relatorio.user.login %> </td>
+                <td class="actions">
+
+                  <%= link_to '<i class= "fas fa-download"></i>'.html_safe, {action: :download, :id => relatorio.id}, { class: 'on-default remove-row', 'data-original-title' => "Download", 'data-toggle' => "tooltip", 'data-placement' => "top", 'title' => "" } %> 
+
+                </td>
+
+              </tr>
+
+              <% end %>
+            </tbody>
+          </table>
+
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+
+    <%= render '/layouts/javascripts' %>
+
+    <%= link_to_prev_page @relatorios, 'Página Anterior', class: 'btn float-left btn-primary waves-light' %>
+    <%= link_to_next_page @relatorios, 'Próxima Página', class: 'btn float-left btn-primary waves-light' %>
+  </body>
+  </html>

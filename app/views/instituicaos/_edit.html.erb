@@ -1,0 +1,139 @@
+<section class="section">
+  <div class="container card card-color" style="margin: 0 auto;">
+    <br>
+    <h1>
+      <p class="flow-text center"> <strong> Cadastro da Instituição </strong>
+      </p>
+    </h1>
+
+    <%= form_with(model: instituicao, local: true) do |form| %>
+    <% if instituicao.errors.any? %>
+    <div id="error_explanation">
+      <div class= "row">
+        <h5 class="col s12 red-text text-darken-4 center-align">
+          <%= pluralize(instituicao.errors.count, "erros") %> impediram o cadastro da instituição:
+        </h5>
+      </div>
+
+      <div class="row">
+        <div class="col s6 push-s3">
+          <ul class="center-align">
+            <% instituicao.errors.full_messages.each do |message| %>
+            <li>
+             <strong> <%= message %> </strong>
+           </li>
+           <% end %>
+         </ul>
+       </div>
+     </div>
+   </div>
+   <% end %>
+
+   <div class= "container center-align">
+    <div class="row">
+      <div class="input-field col s5"> 
+        <i class="material-icons prefix">store</i>
+        <%= form.text_field :nome_instituicao, id: :instituicao_nome_instituicao, class: "validate", placeholder: "Nome da instituição" %>
+      </div>
+      <div class= "col s1">
+        <i class="tooltipped material-icons prefix tamanho-icone" data-position="top" data-tooltip=" Tamanho máximo: <strong style='color: blue;'> Não há tamanho máximo. </strong> <p> <strong style='color: red;'> NomeDaSuaInstituição </strong> 
+          " data-html="true"> help 
+        </i>
+      </div>
+      <div class="input-field col s5">
+        <i class="material-icons prefix">assignment</i>
+        <%= form.text_field :nome_relatorio_instituicao, id: :instituicao_nome_relatorio_instituicao,class: "validate white-text", placeholder: "Nome do relatório da instituição"%>
+      </div>
+      <div class= "col s1">
+        <i class="tooltipped material-icons prefix tamanho-icone" data-position="top" data-tooltip=" Tamanho: <strong style='color: blue;' > 20 </strong> caracteres. <p> CEX.<strong style='color: red;'>NOMEEMPRESAPARCEIRA</strong>.20180102.SOL <p>
+          " data-html="true"> help 
+        </i>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s5">
+        <i class="material-icons prefix">filter_1</i>
+        <%= form.text_field :codigo_instituicao, id: :instituicao_codigo_instituicao,class: "validate white-text", placeholder: "Código da instituição" %>
+      </div>
+      <div class= "col s1">
+        <i class="tooltipped material-icons prefix tamanho-icone" data-position="top" data-tooltip=" Tamanho: <strong style='color: blue;'> 2 </strong> caracteres. <p> Código da empresa parceira <strong style='color: red;'> ENEL </strong>" data-html= "true"> help 
+        </i>
+      </div>
+      <div class="input-field col s5">
+        <i class="material-icons prefix">filter_2</i>
+        <%= form.text_field :codigo_produto, id: :instituicao_codigo_produto,class: "validate white-text", placeholder: "Código do produto" %>
+      </div>
+      <div class= "col s1">
+        <i class="tooltipped material-icons prefix tamanho-icone" data-position="top" data-tooltip=" Tamanho máximo: <strong style='color: blue;'> 2 </strong> caracteres.<p>Código do produto oferecido pela <strong style='color: red;'> ENEL </strong> <p>" data-html= "true" > help 
+        </i>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s5">
+        <i class="material-icons prefix">note</i>
+        <%= form.text_field :nome_arquivo, id: :instituicao_nome_arquivo, class: "validate", placeholder: "Nome no Arquivo" %>
+      </div>
+      <div class= "col s1">
+        <i class="tooltipped material-icons prefix tamanho-icone" data-position="top" data-tooltip="Tamanho: <strong style='color: blue;'> 20 </strong> caracteres. <p> <strong> Exemplo 1º Linha do Relatório: </strong> A201<strong style='color: red;'>AAAAAAAAAAAAAAAAAAAA</strong>2018101700001" data-html= "true" > help 
+        </i>
+      </div>
+      <div class="input-field col s5">
+        <i class="material-icons prefix">domain</i>
+        <%= form.text_field :cnpj, id: :instituicao_cnpj,class: "validate white-text", placeholder: "CNPJ" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s11">
+        <i class="material-icons prefix">email</i>
+        <%= form.text_field :email, id: :instituicao_email,class: "validate white-text", placeholder: "E-mail", :disabled => true %>
+      </div>
+    </div>
+  </div>
+  <h3>
+    <p class="flow-text center"> Telefone
+    </p>
+  </h3>  
+
+  <%= form.fields_for :telefones do |telefone| %>
+
+  <%= render 'telefone_fields', f: telefone %>
+  <% end %>
+
+  <div class="col s12 center-align">
+    <%= link_to_add_association 'Novo Telefone', form, :telefones,  class: 'btn btn-primary cor-botao' %>
+  </div>
+
+  <h3>
+    <p class="flow-text center"> Endereço
+    </p>
+  </h3>
+
+  <%= form.fields_for :enderecos do |endereco| %>
+  <%= render 'endereco_fields', f: endereco %>
+  <% end %>
+
+  <div class="col s12 center-align ">
+    <%= link_to_add_association 'Novo Endereço', form, :enderecos, class: 'btn btn-primary cor-botao' %>
+  </div>
+
+  <br>     
+  <br>
+  <br>
+
+  <div class="actions right-align baixo-botao">
+    <%= form.submit 'enviar',class: 'btn cor-botao' %>
+  </div> 
+
+  <% end %> 
+</div>
+</div>
+</section>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.tooltipped').tooltip();
+  });
+</script>

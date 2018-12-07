@@ -6,7 +6,7 @@ class CreateCadastros < ActiveRecord::Migration[5.1]
       t.string :codigo_ocorrencia
       t.date :data_ocorrencia
       t.float :valor
-      t.string :parcelas
+      t.integer :parcelas
       t.text :livre
       t.boolean :doador_ativo
       t.integer :parcelas_controle

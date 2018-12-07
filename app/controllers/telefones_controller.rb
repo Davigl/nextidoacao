@@ -1,5 +1,6 @@
 class TelefonesController < ApplicationController
-  before_action :set_telefone, only: [:show, :edit, :update, :destroy]
+  
+  before_action :set_telefone, except: [:all]
 
   # GET /telefones
   # GET /telefones.json

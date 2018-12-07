@@ -176,6 +176,8 @@ main {
     font-size: 18px !important;
     font-weight: normal !important;
     margin-bottom: 0px !important;
+    margin-left: 250px;
+    margin-right: 250px;
 }
 
 .quadro{
@@ -221,8 +223,9 @@ main {
 }
 
 .baixo-botao {
-    padding-bottom: 4%;
-    margin-top:11%;
+    padding-bottom: 3%;
+    margin-top: 1%;
+    margin-right: 14%;
 }
 
 .side-nav a:hover { 
@@ -236,10 +239,30 @@ main {
 }
 
 .cor-botao{
-    background-color: #3bafda;
+    background-color: #3bafda !important;
 }
 
+.tamanho-icone{
+    margin-top: 30px !important;
+}
+
+.justificar{
+   text-align: justify;
+   text-justify: inter-word;
+}
+
+.card-color{
+    background-color: #36404a;
+}
+
+ul{
+    list-style-type: circle;
+}
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #778899;
     opacity: 1; /* Firefox */
+}
+
+span.active {
+    background-color: #ea454b;
 }

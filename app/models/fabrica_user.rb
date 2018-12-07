@@ -6,6 +6,7 @@ class FabricaUser
 		user.ativo = false
 		user.instituicao_id = @instituicao.id
 		user.email = @instituicao.email
+		user.admin = true
 
 		if user.save!
 			@instituicao.token = ""
@@ -13,8 +14,14 @@ class FabricaUser
 		end
 	end
 
-	def cria_usuario_colaborador
-
+	def cria_usuario_colaborador(user,current_user)
+		@instituicao = current_user.instituicao
+		
+		user.ativo = true
+		user.admin = false
+		user.instituicao_id = @instituicao.id
+	
+		user.save!			
 	end
 
 end

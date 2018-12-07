@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180625180305) do
+ActiveRecord::Schema.define(version: 20180914200236) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20180625180305) do
     t.string "codigo_ocorrencia"
     t.date "data_ocorrencia"
     t.float "valor"
-    t.string "parcelas"
+    t.integer "parcelas"
     t.text "livre"
     t.boolean "doador_ativo"
     t.integer "parcelas_controle"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20180625180305) do
     t.datetime "updated_at", null: false
     t.bigint "instituicao_id"
     t.bigint "user_id"
+    t.string "autor"
     t.index ["instituicao_id"], name: "index_cadastros_on_instituicao_id"
     t.index ["user_id"], name: "index_cadastros_on_user_id"
   end
@@ -57,6 +58,20 @@ ActiveRecord::Schema.define(version: 20180625180305) do
     t.datetime "updated_at", null: false
     t.string "email"
     t.string "token"
+    t.string "nome_arquivo"
+    t.index ["email"], name: "index_instituicaos_on_email", unique: true
+  end
+
+  create_table "relatorios", force: :cascade do |t|
+    t.date "data_inicio"
+    t.date "data_final"
+    t.string "nome_arquivo"
+    t.bigint "user_id"
+    t.bigint "instituicao_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["instituicao_id"], name: "index_relatorios_on_instituicao_id"
+    t.index ["user_id"], name: "index_relatorios_on_user_id"
   end
 
   create_table "telefones", force: :cascade do |t|
@@ -85,6 +100,7 @@ ActiveRecord::Schema.define(version: 20180625180305) do
     t.string "login"
     t.bigint "instituicao_id"
     t.boolean "ativo"
+    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["instituicao_id"], name: "index_users_on_instituicao_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -111,6 +127,8 @@ ActiveRecord::Schema.define(version: 20180625180305) do
   add_foreign_key "cadastros", "instituicaos"
   add_foreign_key "cadastros", "users"
   add_foreign_key "enderecos", "instituicaos"
+  add_foreign_key "relatorios", "instituicaos"
+  add_foreign_key "relatorios", "users"
   add_foreign_key "telefones", "instituicaos"
   add_foreign_key "users", "instituicaos"
 end

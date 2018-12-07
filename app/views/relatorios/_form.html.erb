@@ -1,0 +1,44 @@
+ <%= form_with(model: relatorio, local: true,  class: 'form-horizontal m-t-20') do |form| %>
+<% if relatorio.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(relatorio.errors.count, "error") %> prohibited this relatorio from being saved:</h2>
+
+  <ul>
+    <% relatorio.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="form-group row">
+  <div class="col-12">
+    <label> Data de Início </label>
+  </div>
+  <div class="col-12">
+    <div class="input-group">
+      <%= form.date_field :data_inicio, class: 'form-control', value: Time.now.strftime('%Y-%m-%d') %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group row">
+  <div class="col-12">
+    <label> Data Final </label>
+  </div>
+  <div class="col-12">
+    <div class="input-group">
+      <%= form.date_field :data_final, class: 'form-control', value: Time.now.strftime('%Y-%m-%d') %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group text-right m-t-20">
+  <div class="col-xs-6">
+    <div class="actions">
+      <%= link_to 'Voltar', relatorios_path, class: 'btn float-left btn-primary waves-light' %>
+      <%= form.submit 'Salvar', class: 'btn btn-primary btn-custom waves-light'%> 
+    </div>  
+  </div>
+</div>
+<% end %>

@@ -1,0 +1,52 @@
+<%= form_for user, url: create_colaborador_path do |form| %>
+<% if user.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(cadastro.errors.count, "erros") %> impediram que este cadastro fosse concluído:</h2>
+
+  <ul>
+    <% user.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="form-group row">
+  <div class="col-12">
+    <label> Login </label>
+  </div>
+  <div class="col-12">
+    <div class="input-group">
+      <%= form.text_area :login, autofocus: true, autocomplete: "Login", class: 'form-control',  placeholder: "Login", disabled: true %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group row">
+  <div class="col-12">
+    <label> Email </label>
+  </div>
+  <div class="col-12">
+    <div class="input-group">
+      <%= form.email_field :email, autocomplete: "email",  placeholder: "E-mail", class: 'form-control', disabled: true %>
+      </div>
+    </div>
+  </div>
+
+<div class="form-group row">
+  <div class="col-12">
+    <label> Quantidade de cadastros: </label>
+    <strong> <%= @user.cadastros.size %> </strong>
+  </div>
+</div>
+
+
+<div class="form-group text-right m-t-20">
+  <div class="col-xs-6">
+    <div class="actions">
+      <%= link_to 'Voltar', colaborador_index_path, class: 'btn float-left btn-primary waves-light' %>
+    </div>  
+  </div>
+</div>
+
+<% end %>

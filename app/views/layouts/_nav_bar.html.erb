@@ -1,0 +1,60 @@
+
+<!-- Begin page -->
+<div id="wrapper">
+
+  <!-- Top Bar Start -->
+  <div class="topbar">
+
+    <!-- LOGO -->
+    <div class="topbar-left">
+      <div class="text-center">
+        <a href="/dashboard" class="logo"><i class="fab fa-adn"></i> <span>[Instituição]</span></a>
+      </div>
+    </div>
+
+    <!-- Button mobile view to collapse sidebar menu -->
+    <nav class="navbar-custom">
+
+      <ul class="list-inline float-right mb-0">
+        <li class="list-inline-item dropdown notification-list">
+          <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button"
+          aria-haspopup="false" aria-expanded="false">
+          <%= image_tag "padrao.png", class: "rounded-circle" %>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right profile-dropdown " aria-labelledby="Preview">
+          <!-- item-->
+          <div class="dropdown-item noti-title">
+            <h5 class="text-overflow"><small>Bem vindo! </small> <%= current_user.login %> </h5>
+          </div>
+
+          <!-- item-->
+          <%= link_to ' <i class="mdi mdi-settings"></i><span>Perfil</span>'.html_safe, colaborador_perfil_path, method: :get, class: 'dropdown-item notify-item' %>
+
+          <!-- item-->
+          <%= link_to ' <i class="mdi mdi-settings"></i><span>Editar Perfil</span>'.html_safe, edit_colaborador_path, method: :get, class: 'dropdown-item notify-item' %>
+
+
+          <% if current_user.admin? %>
+           <!-- item-->
+          <%= link_to ' <i class="mdi mdi-settings"></i><span>Editar Instituicao</span>'.html_safe, edit_instituicao_path, method: :get, class: 'dropdown-item notify-item' %>
+          
+          <% end %>
+
+          <!-- item-->
+          <%= link_to ' <i class="mdi mdi-settings"></i><span>Sair</span>'.html_safe, destroy_user_session_path, method: :delete, class: 'dropdown-item notify-item' %>
+
+        </div>
+      </li>
+
+    </ul>
+
+    <ul class="list-inline menu-left mb-0">
+      <li class="float-left">
+        <button class="button-menu-mobile open-left waves-light waves-effect">
+          <i class="fas fa-bars "></i>
+        </button>
+      </li>
+    </ul>
+  </nav>
+</div>
+

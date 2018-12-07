@@ -4,13 +4,13 @@
   <title>Nextidoacao</title>
   <link href="https://meyerweb.com/eric/tools/css/reset/reset.css" rel="stylesheet">
   <%= csrf_meta_tags %>
-  <%=favicon_link_tag 'favicon.png'%>
+  
+  <%= favicon_link_tag 'favicon.png'%>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <% if %>
-
-  <% end %>
+  
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_link_tag 'custom' %>
+
   <meta nsame="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>   
@@ -19,14 +19,24 @@
       <div class="nav-wrapper container">
         <%= link_to image_tag('logo-nexti-redimensionado.png', class: 'brand-logo logo'), welcome_path %>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><%= link_to 'Início', root_path %></li>
+          <li><%= link_to 'Sobre', about_path %></li>
           
-          <li><%= link_to 'Inicio', root_path %></li>
-          <li><a href="">Sobre</a></li>
-          <% if usuario_nexti_signed_in? or user_signed_in? %>
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to 'Dashboard', cadastros_path %>
+            </li>
+          <% end %> 
+          <% if usuario_nexti_signed_in? %>
           <li>
             <%= link_to 'Sair', destroy_usuario_nexti_session_path, method: :delete %>
           </li>
-          <% end %> 
+          <% end %>
+          <% if user_signed_in? %>
+          <li>
+            <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
+          </li>
+          <% end %>
         </ul>
       </div>
     </nav>
@@ -39,24 +49,26 @@
   <footer class="page-footer color-nav">
     <div class="container">
       <div class="row">
-        <div class="col l4 s12">
+        <div class="col s4">
           <h5 class="white-text">NExTI</h5>
           <p class="grey-text text-lighten-4">Mais um sistema feito pelo Núcleo de extensão em tecnologia da informação da Faculdade Paraíso</p>
         </div>
-        <div class="col l3 offset-l1 s12">
+        <div class="col s4">
           <h5 class="white-text">Links úteis</h5>
           <ul>
-            <li><a class="grey-text text-lighten-3" href="#!">Faculdade Paraíso</a></li>
+            <li><a class="grey-text text-lighten-3" href="https://www.fapce.edu.br/index.php">Faculdade Paraíso do Ceará</a></li>
             <br>
-            <li><a class="grey-text text-lighten-3" href="#!">NExTI</a></li>
+            <li><a class="grey-text text-lighten-3" href="https://nexti.fapce.edu.br/">NExTI</a></li>
           </ul>
         </div>
-        <div class="col l3">
-          <h5 class="white-text">Contatos </h5>
+        <div class="col s4">
+          <h5 class="white-text" align="center">Contatos</h5>
           <ul>
-            <li ><p class="grey-text text-lighten-4"><i class="material-icons">call</i> (88) 352123299</p></li>
-            <li><p class="grey-text text-lighten-4"><i class="material-icons">email</i> nexti@fapce.edu.br</p></li>
-            <li><p class="grey-text text-lighten-4"><i class="material-icons">location_on</i> R. da Conceição, 1180 - São Miguel, Juazeiro do Norte - CE,  CEP: 63010-222 </p></li>
+            <li ><p class="grey-text text-lighten-4" align="center"><i class="material-icons">call</i> <br> (88) 3512-3229</p></li> <br>
+            <li><p class="grey-text text-lighten-4" align="center"><i class="material-icons">email</i><br> nexti@fapce.edu.br</p></li>
+            <li> <br> <p class="grey-text text-lighten-4" align="center"><i class="material-icons">location_on</i>
+             <br> R. da Conceição, 1180 <br> São Miguel <br> Juazeiro do Norte - CE<br>  CEP: 63010-222 
+             </p></li>
           </ul>
         </div>
       </div>
@@ -69,4 +81,3 @@
   </footer>
 </body>
 </html>
-<!--- and if you threat me bad i'll say you're bad --->
