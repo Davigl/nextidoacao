@@ -1,5 +1,4 @@
 class SessionsController < Devise::SessionsController
-
 	before_action :require_activated, only: [:create]
 
 	def new
@@ -33,5 +32,4 @@ class SessionsController < Devise::SessionsController
 			end
 		end
 	end
-
 end

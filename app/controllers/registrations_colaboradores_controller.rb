@@ -1,5 +1,4 @@
 class RegistrationsColaboradoresController < Devise::RegistrationsController
-
 	prepend_before_action :require_no_authentication, only: :cancel
 	before_action :is_admin, only: [:new, :create]
 

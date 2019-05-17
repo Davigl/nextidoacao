@@ -1,5 +1,4 @@
 class InstituicaosController < ApplicationController
-  
   before_action :set_instituicao, only: [:edit, :update]
   helper_method :incrementar
 
