@@ -1,33 +1,47 @@
-<header class="raiz">
-    <div class="calloutContainer baixo">
-        <h1 class="callout">Sistema de doação</h1>
-        <h5 style="font-size: 18px !important;">Faça parte da nossa família e ajude milhares de pessoas de forma eficiente e 100% responsável. </h5>
-    </div>
-    <div class="buttons_9376ib hide-on-med-and-down">
+<div class="hide-on-med-and-down">
+    <header class="raiz">
+        <div class="calloutContainer baixo">
+            <h1 class="callout">Sistema de doação</h1>
+            <h5 style="font-size: 20px !important;">Faça parte da nossa família e ajude milhares de pessoas de forma eficiente e 100% responsável. </h5>
+        </div>
+        <div class="buttons_9376ib">
 
-        <%= link_to '<button class="button1" style="color: rgb(0, 41, 74); border-color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); min-width: 368px; box-shadow: transparent 0px 0px 4px 4px;"><div class="inner_ed2ug6">Quero me Cadastrar</div></button>'.html_safe, cadastrar_instituicao_path %>
+            <%= link_to '<button class="button1" style="color: rgb(0, 41, 74); border-color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); min-width: 368px; box-shadow: transparent 0px 0px 4px 4px;"><div class="inner_ed2ug6">Quero me Cadastrar</div></button>'.html_safe, cadastrar_instituicao_path %>
 
-        <div class="whiteButtonContainer ">
+            <div class="whiteButtonContainer ">
 
-            <%= link_to '<button class="button1" style="color: rgb(0, 41, 74); border-color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); min-width: 368px; box-shadow: transparent 0px 0px 4px 4px;"><div class="inner_ed2ug6">Já possuo Cadastro</div></button>'.html_safe, new_user_session_path %>
+                <%= link_to '<button class="button1" style="color: rgb(0, 41, 74); border-color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); min-width: 368px; box-shadow: transparent 0px 0px 4px 4px;"><div class="inner_ed2ug6">Já possuo Cadastro</div></button>'.html_safe, new_user_session_path %>
 
+            </div>
         </div>
     </div>
-    <div class="hide-on-large-only ">
-        <a href="#" data-activates="menu-mobile" class="button-collapse btn-floating btn-large green lighten-1 center pulse">
-            <i class="material-icons">menu</i>
-        </a>
-        <ul id="menu-mobile" class="side-nav">
-            <li>
-                <%= link_to '<i class= "material-icons">person</i>Quero me cadastrar'.html_safe, cadastrar_instituicao_path%> 
-            </li>
-            <li>
-               <%= link_to '<i class= "material-icons">person_outline</i>Já possuo cadastro'.html_safe, new_user_session_path%> 
-           </li>
-       </ul>
-   </div>
 </header>
-<script>
-    $(".button-collapse").sideNav();
+</div>
 
+<div class="hide-on-large-only ">
+    <header class="raiz">
+        <div class="calloutContainer baixo">
+            <h1 class="callout">Sistema de doação</h1>
+            <h5 style="font-size: 20px !important;">Faça parte da nossa família e ajude milhares de pessoas de forma eficiente e 100% responsável. </h5>
+        </div>
+        <div class="row">
+            <div class="col s12 center">
+                <a href="#" data-activates="menu-mobile" class="button-collapse btn-floating btn-large blue lighten-1 center-align">
+                    <i class="material-icons">menu</i>
+                </a>
+                <ul id="menu-mobile" class="side-nav">
+                    <li>
+                        <%= link_to '<i class= "material-icons">person</i>Quero me cadastrar'.html_safe, cadastrar_instituicao_path%> 
+                    </li>
+                    <li>
+                     <%= link_to '<i class= "material-icons">person_outline</i>Já possuo cadastro'.html_safe, new_user_session_path%> 
+                 </li>
+             </ul>
+         </div>
+     </header>
+ </div>
+
+
+ <script>
+    $(".button-collapse").sideNav();
 </script>

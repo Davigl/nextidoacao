@@ -3,35 +3,36 @@
 	  </script>
 	  
 	  <!-- Plugins  -->
-	  <script src="/assets/dashboard/jquery.min.js"></script>
-	  <script src="/assets/dashboard/popper.min.js"></script><!-- Popper for Bootstrap -->
-	  <script src="/assets/dashboard/detect.js"></script>
-	  <script src="/assets/dashboard/fastclick.js"></script>
-	  <script src="/assets/dashboard/jquery.slimscroll.js"></script>
-	  <script src="/assets/dashboard/jquery.blockUI.js"></script>
-	  <script src="/assets/dashboard/waves.js"></script>
-	  <script src="/assets/dashboard/wow.min.js"></script>
-	  <script src="/assets/dashboard/jquery.nicescroll.js"></script>
-	  <script src="/assets/dashboard/jquery.scrollTo.min.js"></script>
-	  <script src="/assets/dashboard/switchery.min.js"></script>
+	  <%=javascript_include_tag 'dashboard_js/jquery.min', 'data-turbolink-track': 'reload' %>
+	  <%=javascript_include_tag 'dashboard_js/popper.min', 'data-turbolink-track': 'reload' %>
+	  <%=javascript_include_tag 'dashboard_js/detect', 'data-turbolink-track': 'reload' %>
+	  <%=javascript_include_tag 'dashboard_js/fastclick', 'data-turbolink-track': 'reload' %>
+	  <%=javascript_include_tag 'dashboard_js/jquery.slimscroll', 'data-turbolink-track': 'reload' %>
+	  <%=javascript_include_tag 'dashboard_js/jquery.blockUI', 'data-turbolink-track': 'reload' %>
+	  <%=javascript_include_tag 'dashboard_js/waves', 'data-turbolink-track': 'reload' %>
+	  <%=javascript_include_tag 'dashboard_js/wow.min', 'data-turbolink-track': 'reload' %>
+	  <%=javascript_include_tag 'dashboard_js/jquery.nicescroll', 'data-turbolink-track': 'reload' %>
+	  <%=javascript_include_tag 'dashboard_js/jquery.scrollTo.min', 'data-turbolink-track': 'reload' %>
+	  <%=javascript_include_tag 'dashboard_js/switchery.min', 'data-turbolink-track': 'reload' %>
 
 	  <!-- Counter Up  -->
-	  <script src="/assets/dashboard/jquery.waypoints.min.js"></script>
-	  <script src="/assets/dashboard/jquery.counterup.min.js"></script>
+	  <%=javascript_include_tag 'dashboard_js/jquery.waypoints.min', 'data-turbolink-track': 'reload' %>
+	  <%=javascript_include_tag 'dashboard_js/jquery.counterup.min', 'data-turbolink-track': 'reload' %>
 
 	  <!-- circliful Chart -->
-	  <script src="/assets/dashboard/jquery.circliful.min.js"></script>
-	  <script src="/assets/dashboard/jquery.sparkline.min.js"></script>
+	  <%=javascript_include_tag 'dashboard_js/jquery.circliful.min', 'data-turbolink-track': 'reload' %>
+	  <%=javascript_include_tag 'dashboard_js/jquery.sparkline.min', 'data-turbolink-track': 'reload' %> 
 
 	  <!-- skycons -->
-	  <script src="/assets/dashboard/skycons.min.js" type="text/javascript"></script>
+	  <%=javascript_include_tag 'dashboard_js/skycons.min', 'data-turbolink-track': 'reload' %>
 
 	  <!-- Page js  -->
 	  <% if current_page?(dashboard_path) %>
-	  <script src="/assets/dashboard/jquery.dashboard.js"></script>
+	  	<%= javascript_include_tag 'dashboard_js/jquery.dashboard', 'data-turbolink-track': 'reload' %>
 	  <% end %>
-	  <script src="/assets/dashboard/bootstrap.min.js"></script>
+
+	  <%=javascript_include_tag 'dashboard_js/bootstrap.min', 'data-turbolink-track': 'reload' %>
 
 	  <!-- Custom main Js -->
-	  <script src="/assets/dashboard/jquery.core.js"></script>
-	  <script src="/assets/dashboard/jquery.app.js"></script>
+	  <%=javascript_include_tag 'dashboard_js/jquery.core', 'data-turbolink-track': 'reload' %>
+	  <%=javascript_include_tag 'dashboard_js/jquery.app', 'data-turbolink-track': 'reload' %> 

@@ -28,7 +28,7 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = true
+  config.assets.compile = false
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
@@ -60,10 +60,11 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "nextidoacao_#{Rails.env}"
   config.action_mailer.perform_caching = false
+  config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.smtp_settings = {
-    :user_name => 'nextipro2@gmail.com',
-    :password => 'AdminEnel2017',
+    :user_name => ENV['GMAIL_USER'],
+    :password => ENV['GMAIL_PASSWORD'],
     :address => 'smtp.gmail.com',
     :port => 587,
     :authentication => :plain,

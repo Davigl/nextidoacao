@@ -9,11 +9,11 @@
 	<title>Novo Relatorio</title>
 	<%= favicon_link_tag 'favicon.png'%>
 
-	<link href="/assets/dashboard/switchery.min.css" rel="stylesheet" />
-
-	<link href="/assets/bootstrap.min.css" rel="stylesheet" type="text/css">
-	<link href="/assets/dashboard/style.css" rel="stylesheet" type="text/css">
-	<script src="/assets/dashboard/modernizr.min.js"></script>
+	
+	<%= stylesheet_link_tag 'dashboard_styles/switchery.min',  'data-turbolink-track': 'reload' %>
+	<%= stylesheet_link_tag 'bootstrap.min',  'data-turbolink-track': 'reload' %>
+	<%= stylesheet_link_tag 'dashboard_styles/style',  'data-turbolink-track': 'reload' %>
+	<%= javascript_include_tag 'dashboard_js/modernizr.min',  'data-turbolink-track': 'reload' %>
 
 </head>
 

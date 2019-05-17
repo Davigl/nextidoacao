@@ -3,13 +3,10 @@ class InstituicaosController < ApplicationController
   before_action :set_instituicao, only: [:edit, :update]
   helper_method :incrementar
 
-  # GET /instituicaos/new
   def new
     @instituicao = Instituicao.new
   end
 
-  # POST /instituicaos
-  # POST /instituicaos.json
   def create
     @instituicao = Instituicao.new(instituicao_params)
     respond_to do |format|
@@ -24,8 +21,7 @@ class InstituicaosController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit ;end
 
   def update
     if @instituicao.update(instituicao_params)
@@ -36,15 +32,13 @@ class InstituicaosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_instituicao
       @instituicao = current_user.instituicao
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def instituicao_params
       params.require(:instituicao).permit(:nome_instituicao, :nome_relatorio_instituicao, 
         :codigo_instituicao, :codigo_produto, :logo, :cnpj, :email, :nome_arquivo, telefones_attributes: [:id, :numero, :codigo_area, :tipo],
         enderecos_attributes: [:logradouro, :tipo_logradouro, :numero, :bairro, :cidade, :estado])
     end
-  end
+end

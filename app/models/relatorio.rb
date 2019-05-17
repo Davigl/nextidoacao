@@ -11,6 +11,11 @@ class Relatorio < ApplicationRecord
 
 	def generate_content_file(instituicao)
 		@date = Time.now
+		
+		if isDia28 @date
+			isSaturdayOrSunday @date
+		end
+
 		@instituicao = instituicao
 		cadastros = getCadastros(@instituicao)
 
@@ -72,15 +77,28 @@ class Relatorio < ApplicationRecord
 		cadastros_relatorios	
 	end
 
+    def post_date_relatorio(data)
+        
+    	if isDia28(data)
+    		isSaturdayOrSunday(data)
+    	end
+
+        data.strftime("%Y%m%d")
+    end
+
 	def isAdesao(cadastro)
-		cadastro.codigo_ocorrencia == '53'
+		return cadastro.codigo_ocorrencia == '53'
 	end
 
 	def isDia28(date)
 		date.strftime('%e').to_i == 28
 	end
 
-	def isSaturday(date)
-
+	def isSaturdayOrSunday(date)
+		if date.saturday?
+			date -= 86400
+		elsif date.sunday?
+			date -= 86400 * 2
+		end	
 	end
 end

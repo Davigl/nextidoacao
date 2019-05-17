@@ -10,14 +10,12 @@
 
   <%= favicon_link_tag 'favicon.png'%>
 
-  <link href="/assets/dashboard/switchery.min.css" rel="stylesheet" />
-  <link href="/assets/dashboard/jquery.circliful.css" rel="stylesheet" type="text/css" />
-
-  <link href="/assets/bootstrap.min.css" rel="stylesheet" type="text/css">
-  <link href="/assets/dashboard/style.css" rel="stylesheet" type="text/css">
-
-  <script src="/assets/dashboard/modernizr.min.js"></script>
-
+  <%= stylesheet_link_tag 'dashboard_styles/jquery.circliful', 'data-turbolink-track': 'reload' %>
+  <%= stylesheet_link_tag 'dashboard_styles/switchery.min',  'data-turbolink-track': 'reload' %>
+  <%= stylesheet_link_tag 'bootstrap.min',  'data-turbolink-track': 'reload' %>
+  <%= stylesheet_link_tag 'dashboard_styles/style',  'data-turbolink-track': 'reload' %>
+  <%= javascript_include_tag 'dashboard_js/modernizr.min',  'data-turbolink-track': 'reload' %>
+  
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 </head>
 
@@ -48,7 +46,7 @@
             <%= render '/layouts/search' %>
 
             <% if @cadastros.size == 0 %>
-            <strong style= "color: #2ab6ed";> Não há cadastros para exibir. </strong>
+              <strong style= "color: #2ab6ed";> Não há cadastros para exibir. </strong>
             <% else %>
 
             <table class="table table-striped add-edit-table" id="datatable-editable">
@@ -94,10 +92,11 @@
          </div>
        </div>
      </div>
+
     <%= render '/layouts/javascripts' %>
     
     <%= link_to_prev_page @cadastros, 'Página Anterior', class: 'btn float-left btn-primary waves-light' %>
-    <%= link_to_next_page @cadastros, 'Próxima Página', class: 'btn float-left btn-primary waves-light' %>
+    <%= link_to_next_page @cadastros, 'Próxima Página', class: 'btn float-right btn-primary waves-light' %>
 
   </body>
   </html>

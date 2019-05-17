@@ -11,14 +11,12 @@
 
     <title>Dashboard</title>
 
-    <link href="/assets/dashboard/switchery.min.css" rel="stylesheet" />
-    <link href="/assets/dashboard/jquery.circliful.css" rel="stylesheet" type="text/css" />
+    <%= stylesheet_link_tag 'dashboard_styles/switchery.min',  'data-turbolink-track': 'reload' %>
+    <%= stylesheet_link_tag 'dashboard_styles/jquery.circliful', 'data-turbolink-track': 'reload' %>
+    <%= stylesheet_link_tag 'bootstrap.min',  'data-turbolink-track': 'reload' %>
+    <%= stylesheet_link_tag 'dashboard_styles/style',  'data-turbolink-track': 'reload' %>
+    <%= javascript_include_tag 'dashboard_js/modernizr.min',  'data-turbolink-track': 'reload' %>
 
-    <link href="/assets/bootstrap.min.css" rel="stylesheet" type="text/css">
-    
-    <%= stylesheet_link_tag '/assets/dashboard/style.css' %>
-
-    <script src="/assets/dashboard/modernizr.min.js"></script>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 </head>
@@ -29,7 +27,7 @@
     <%= render '/layouts/nav_bar' %>
 
     <%= render '/layouts/side_bar' %>
-                      
+    
     <div class="content-page">
         <!-- Start content -->
         <div class="content">
@@ -73,124 +71,124 @@
                         <div class="widget-simple-chart text-right card-box">
                             <div class="circliful-chart" data-dimension="90" data-text="<%= @percentual_liquido %> %" data-width="5" data-fontsize="14" data-percent="<%= @percentual_liquido %>" data-fgcolor="#98a6ad" data-bgcolor="#505A66"></div>
                             <h3 class="m-t-10">
-                            <%= @arrecadado %> R$</h3>
-                            <p class="text-muted text-nowrap m-b-10"> Arrecadado no mês </p>
-                            <p> Meta: <strong style="color: #5fbeaa; "> 1000 R$ </strong> </p>
-                        </div>
-                    </div>
-                </div>
-                <!-- end row -->
-
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="card-box">
-                            <h4 class="header-title m-t-0 m-b-30">DOADORES DIAS DA SEMANA</h4>
-
-                            <div class="widget-chart text-center">
-                                <div id="sparkline1"></div>
-                                <ul class="list-inline m-t-15 mb-0">
-                                    <li>
-                                    <h5 class="text-muted m-t-20"> Mais Cadastros </h5>
-                                        <h4 class="m-b-0" style="color: #5fbeaa;"> <%= @dia_mais_cadastros %> <i class="fas fa-long-arrow-alt-up"></i> </h4> 
-                                    </li>
-                                    <li>
-                                        <h5 class="text-muted m-t-20"> Menos Cadastros</h5>
-                                        <h4 class="m-b-0" style="color: #e03d28;"> <%= @dia_menos_cadastros %> <i class="fas fa-long-arrow-alt-down"></i> </h4>
-                                    </li>
-                                </ul>
+                                <%= @arrecadado %> R$</h3>
+                                <p class="text-muted text-nowrap m-b-10"> Arrecadado no mês </p>
+                                <p> Meta: <strong style="color: #5fbeaa; "> 1000 R$ </strong> </p>
                             </div>
                         </div>
                     </div>
+                    <!-- end row -->
 
-                    <div class="col-lg-4">
-                        <div class="card-box">
-                            <h4 class="header-title m-t-0 m-b-30">DOADORES POR MESES</h4>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="card-box">
+                                <h4 class="header-title m-t-0 m-b-30">DOADORES DIAS DA SEMANA</h4>
 
-                            <div class="widget-chart text-center">
-                                <div id="sparkline2"></div>
-                                <ul class="list-inline m-t-15 mb-0">
-                                    <li>
-                                    <h5 class="text-muted m-t-20"> Mais Cadastros </h5>
-                                        <h4 class="m-b-0" style="color: #5fbeaa;"> <%= @mes_mais_cadastros %> <i class="fas fa-long-arrow-alt-up"></i> </h4> 
-                                    </li>
-                                    <li>
-                                        <h5 class="text-muted m-t-20"> Menos Cadastros</h5>
-                                        <h4 class="m-b-0" style="color: #e03d28;"> <%= @mes_menos_cadastros %> <i class="fas fa-long-arrow-alt-down"></i> </h4>
-                                    </li>
-                                </ul>
+                                <div class="widget-chart text-center">
+                                    <div id="sparkline1"></div>
+                                    <ul class="list-inline m-t-15 mb-0">
+                                        <li>
+                                            <h5 class="text-muted m-t-20"> Mais Cadastros </h5>
+                                            <h4 class="m-b-0" style="color: #5fbeaa;"> <%= @dia_mais_cadastros %> <i class="fas fa-long-arrow-alt-up"></i> </h4> 
+                                        </li>
+                                        <li>
+                                            <h5 class="text-muted m-t-20"> Menos Cadastros</h5>
+                                            <h4 class="m-b-0" style="color: #e03d28;"> <%= @dia_menos_cadastros %> <i class="fas fa-long-arrow-alt-down"></i> </h4>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
 
-                    </div>
+                        <div class="col-lg-4">
+                            <div class="card-box">
+                                <h4 class="header-title m-t-0 m-b-30">DOADORES POR MESES</h4>
 
-                    <div class="col-lg-4">
-                        <div class="card-box">
-                            <h4 class="header-title m-t-0 m-b-30" align="center">CADASTROS POR COLABORADORES</h4>
+                                <div class="widget-chart text-center">
+                                    <div id="sparkline2"></div>
+                                    <ul class="list-inline m-t-15 mb-0">
+                                        <li>
+                                            <h5 class="text-muted m-t-20"> Mais Cadastros </h5>
+                                            <h4 class="m-b-0" style="color: #5fbeaa;"> <%= @mes_mais_cadastros %> <i class="fas fa-long-arrow-alt-up"></i> </h4> 
+                                        </li>
+                                        <li>
+                                            <h5 class="text-muted m-t-20"> Menos Cadastros</h5>
+                                            <h4 class="m-b-0" style="color: #e03d28;"> <%= @mes_menos_cadastros %> <i class="fas fa-long-arrow-alt-down"></i> </h4>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
 
-                            <div class="widget-chart text-center">
-                                <div id="sparkline3"></div>
-                                <ul class="list-inline m-t-15 mb-0">
-                                    <p> <strong> Visualização de dados </strong> <br> Quantidade de cadastros realizados pelos colaboradores da instituição.  </p>
-                                    
-                                </ul>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="card-box">
+                                <h4 class="header-title m-t-0 m-b-30" align="center">CADASTROS POR COLABORADORES</h4>
+
+                                <div class="widget-chart text-center">
+                                    <div id="sparkline3"></div>
+                                    <ul class="list-inline m-t-15 mb-0">
+                                        <p> <strong> Visualização de dados </strong> <br> Quantidade de cadastros realizados pelos colaboradores da instituição.  </p>
+                                        
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- end row -->
+                    <!-- end row -->
 
 
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card-box">
-                            <h4 class="header-title m-t-0">Últimos cadastros</h4>
-                            <div class="table-responsive">
-                                <table class="table mb-0">
-                                    <thead>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card-box">
+                                <h4 class="header-title m-t-0">Últimos cadastros</h4>
+                                <div class="table-responsive">
+                                    <table class="table mb-0">
+                                        <thead>
+                                            <tr>
+                                              <th>Status </th>
+                                              <th>ID Cliente Enel</th>
+                                              <th>Data do Cadastro</th>
+                                              <th>Valor</th>
+                                              <th>Parcelas</th>
+                                              <th> Autor </th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                        <% @ultimos_cadastros.each do |cadastro| %>
                                         <tr>
-                                          <th>Status </th>
-                                          <th>ID Cliente Enel</th>
-                                          <th>Data do Cadastro</th>
-                                          <th>Valor</th>
-                                          <th>Parcelas</th>
-                                          <th> Autor </th>
-                                      </tr>
-                                  </thead>
-                                  <tbody>
-                                    <% @ultimos_cadastros.each do |cadastro| %>
-                                    <tr>
-                                       <% if cadastro.doador_ativo %>
-                                       <td> <i class="fas fa-user", style="color: #94cc6a;"></i></td>
-                                       <% else %>
-                                       <td> <i class="fas fa-user", style="color: #e03d28;"></i></td>
+                                           <% if cadastro.doador_ativo %>
+                                           <td> <i class="fas fa-user", style="color: #94cc6a;"></i></td>
+                                           <% else %>
+                                           <td> <i class="fas fa-user", style="color: #e03d28;"></i></td>
+                                           <% end %>
+                                           <td> <%= cadastro.id_cliente_enel %> </td>
+                                           <td> <%= post_date cadastro.data_ocorrencia %> </td>
+                                           <td>R$ <%= cadastro.valor %> </td>
+                                           <td> <%= cadastro.parcelas %> </td>
+                                           <td style="color: #2ab6ed;"> <strong><%= cadastro.autor %></strong> </td>
+                                       </tr>
                                        <% end %>
-                                       <td> <%= cadastro.id_cliente_enel %> </td>
-                                       <td> <%= post_date cadastro.data_ocorrencia %> </td>
-                                       <td>R$ <%= cadastro.valor %> </td>
-                                       <td> <%= cadastro.parcelas %> </td>
-                                       <td style="color: #2ab6ed;"> <strong><%= cadastro.autor %></strong> </td>
-                                   </tr>
-                                   <% end %>
-                               </tbody>
-                           </table>
+                                   </tbody>
+                               </table>
+                           </div>
                        </div>
                    </div>
                </div>
+
            </div>
 
-       </div>
+           <footer class="footer">
+            2018 © NexTI <span class="hide-phone">- Núcleo de Extensão em Tecnologia da Informação</span>
+        </footer>
 
-       <footer class="footer">
-        2018 © NexTI <span class="hide-phone">- Núcleo de Extensão em Tecnologia da Informação</span>
-    </footer>
-
-</div>
+    </div>
 
 </div>
 
 <%= render '/layouts/javascripts' %>
 <!-- Page js  -->
-<script src="/assets/dashboard/jquery.dashboard.js"></script>
+<%= javascript_include_tag 'dashboard_js/jquery.dashboard.js',  'data-turbolink-track': 'reload' %>
 
 
 <script type="text/javascript">

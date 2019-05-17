@@ -10,22 +10,19 @@
     <% if instituicao.errors.any? %>
     <div id="error_explanation">
       <div class= "row">
-        <h5 class="col s12 red-text text-darken-4 center-align">
+        <h5 class="col s12 blue-text text-darken-1 center-align">
           <%= pluralize(instituicao.errors.count, "erros") %> impediram o cadastro da instituição:
         </h5>
-      </div>
 
-      <div class="row">
-        <div class="col s6 push-s3">
           <ul class="center-align">
-            <% instituicao.errors.full_messages.each do |message| %>
-            <li>
-             <strong> <%= message %> </strong>
-           </li>
-           <% end %>
-         </ul>
-       </div>
-     </div>
+        <% instituicao.errors.full_messages.each do |message| %>
+        <li>
+         <strong> <%= message %> </strong>
+       </li>
+       <% end %>
+     </ul>
+
+      </div>
    </div>
    <% end %>
 
@@ -36,7 +33,7 @@
         <%= form.text_field :nome_instituicao, id: :instituicao_nome_instituicao, class: "validate", placeholder: "Nome da instituição" %>
       </div>
       <div class= "col s1">
-        <i class="tooltipped material-icons prefix tamanho-icone" data-position="top" data-tooltip=" Tamanho máximo: <strong style='color: blue;'> Não há tamanho máximo. </strong> <p> <strong style='color: red;'> NomeDaSuaInstituição </strong> 
+        <i class="tooltipped material-icons prefix tamanho-icone" data-position="top" data-tooltip=" Tamanho máximo: Não há tamanho máximo. <p> <strong style='color: red;'> NomeDaSuaInstituição </strong> 
           " data-html="true"> help 
         </i>
       </div>
@@ -45,7 +42,7 @@
         <%= form.text_field :nome_relatorio_instituicao, id: :instituicao_nome_relatorio_instituicao,class: "validate white-text", placeholder: "Nome do relatório da instituição"%>
       </div>
       <div class= "col s1">
-        <i class="tooltipped material-icons prefix tamanho-icone" data-position="top" data-tooltip=" Tamanho: <strong style='color: blue;' > 20 </strong> caracteres. <p> CEX.<strong style='color: red;'>NOMEEMPRESAPARCEIRA</strong>.20180102.SOL <p>
+        <i class="tooltipped material-icons prefix tamanho-icone" data-position="top" data-tooltip=" Tamanho:  20  <p> CEX.<strong style='color: red;'>NOMEEMPRESAPARCEIRA</strong>.20180102.SOL <p>
           " data-html="true"> help 
         </i>
       </div>
@@ -57,7 +54,7 @@
         <%= form.text_field :codigo_instituicao, id: :instituicao_codigo_instituicao,class: "validate white-text", placeholder: "Código da instituição" %>
       </div>
       <div class= "col s1">
-        <i class="tooltipped material-icons prefix tamanho-icone" data-position="top" data-tooltip=" Tamanho: <strong style='color: blue;'> 2 </strong> caracteres. <p> Código da empresa parceira <strong style='color: red;'> ENEL </strong>" data-html= "true"> help 
+        <i class="tooltipped material-icons prefix tamanho-icone" data-position="top" data-tooltip=" Tamanho:  2  caracteres. <p> Código da empresa parceira <strong style='color: red;'> ENEL </strong>" data-html= "true"> help 
         </i>
       </div>
       <div class="input-field col s5">
@@ -65,7 +62,7 @@
         <%= form.text_field :codigo_produto, id: :instituicao_codigo_produto,class: "validate white-text", placeholder: "Código do produto" %>
       </div>
       <div class= "col s1">
-        <i class="tooltipped material-icons prefix tamanho-icone" data-position="top" data-tooltip=" Tamanho máximo: <strong style='color: blue;'> 2 </strong> caracteres.<p>Código do produto oferecido pela <strong style='color: red;'> ENEL </strong> <p>" data-html= "true" > help 
+        <i class="tooltipped material-icons prefix tamanho-icone" data-position="top" data-tooltip=" Tamanho máximo: 2 caracteres.<p>Código do produto oferecido pela <strong style='color: red;'> ENEL </strong> <p>" data-html= "true" > help 
         </i>
       </div>
     </div>
@@ -76,7 +73,7 @@
         <%= form.text_field :nome_arquivo, id: :instituicao_nome_arquivo, class: "validate", placeholder: "Nome no Arquivo" %>
       </div>
       <div class= "col s1">
-        <i class="tooltipped material-icons prefix tamanho-icone" data-position="top" data-tooltip="Tamanho: <strong style='color: blue;'> 20 </strong> caracteres. <p> <strong> Exemplo 1º Linha do Relatório: </strong> A201<strong style='color: red;'>AAAAAAAAAAAAAAAAAAAA</strong>2018101700001" data-html= "true" > help 
+        <i class="tooltipped material-icons prefix tamanho-icone" data-position="top" data-tooltip="Tamanho: 20 caracteres. <p> <strong> Exemplo 1º Linha do Relatório: </strong> A201<strong style='color: red;'>AAAAAAAAAAAAAAAAAAAA</strong>2018101700001" data-html= "true" > help 
         </i>
       </div>
       <div class="input-field col s5">

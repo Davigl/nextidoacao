@@ -32,7 +32,7 @@ class CadastrosController < ApplicationController
     @cadastro.instituicao_id = current_user.instituicao_id
     @cadastro.user_id = current_user.id
     @cadastro.autor = current_user.login
-    @cadastro.doador_ativo = true
+    @cadastro.doador_ativo = false
     
     respond_to do |format|
       if @cadastro.save
