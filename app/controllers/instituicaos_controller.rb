@@ -9,15 +9,13 @@ class InstituicaosController < ApplicationController
 
   def create
     @instituicao = Instituicao.new(instituicao_params)
-    respond_to do |format|
-      if @instituicao.save
-        format.html { redirect_to email_validation_path, notice: 'Instituicao was successfully created.' }
-        format.json { render :show, status: :created, location: @instituicao }
-        UserMailer.welcome_email(@instituicao).deliver_later
-      else
-        format.html { render :new }
-        format.json { render json: @instituicao.errors, status: :unprocessable_entity }
-      end
+    
+    if @instituicao.save
+      redirect_to email_validation_path, notice: 'Instituicao was successfully created.'
+      
+      UserMailer.welcome_email(@instituicao).deliver_later
+    else
+      render :new
     end
   end
 

@@ -3,7 +3,6 @@ class Relatorio < ApplicationRecord
 	belongs_to :instituicao
 	belongs_to :user
 
-	#Function to Formater number decimal to n decimal with zeros
 	#Função para formatar um numero decimal adicionando zeros
 	def fnd(n, number)
 		"%0#{n}d" % number
@@ -77,8 +76,7 @@ class Relatorio < ApplicationRecord
 		cadastros_relatorios	
 	end
 
-    def post_date_relatorio(data)
-        
+    def post_date_relatorio(data)    
     	if isDia28(data)
     		isSaturdayOrSunday(data)
     	end

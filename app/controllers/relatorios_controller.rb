@@ -21,39 +21,27 @@ class RelatoriosController < ApplicationController
     @relatorio.user_id = current_user.id
     @relatorio.instituicao_id = current_user.instituicao.id
 
-    respond_to do |format|
-      if @relatorio.save
-
+    if @relatorio.save
         @relatorio.nome_arquivo = "CEX." + current_user.instituicao.nome_relatorio_instituicao + "." + @relatorio.post_date_relatorio(@relatorio.created_at) + ".SOL"
         @relatorio.save!
 
-        format.html { redirect_to relatorios_path, notice: 'Relatorio was successfully created.' }
-
-      else
-        format.html { render :new }
-        format.json { render json: @relatorio.errors, status: :unprocessable_entity }
-      end
+        redirect_to relatorios_path, notice: 'Relatorio was successfully created.'
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @relatorio.update(relatorio_params)
-        format.html { redirect_to @relatorio, notice: 'Relatorio was successfully updated.' }
-        format.json { render :show, status: :ok, location: @relatorio }
-      else
-        format.html { render :edit }
-        format.json { render json: @relatorio.errors, status: :unprocessable_entity }
-      end
+    if @relatorio.update(relatorio_params)
+      redirect_to @relatorio, notice: 'Relatorio was successfully updated.'
+    else
+      render :edit
     end
   end
 
   def destroy
     @relatorio.destroy
-    respond_to do |format|
-      format.html { redirect_to relatorios_url, notice: 'Relatorio was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to relatorios_url, notice: 'Relatorio was successfully destroyed.'
   end
 
   def download

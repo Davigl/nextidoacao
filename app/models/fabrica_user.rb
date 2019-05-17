@@ -1,5 +1,4 @@
 class FabricaUser
-	
 	def cria_usuario_admin(user, token)
 		@instituicao = Instituicao.find_by token: (token)
 
@@ -23,5 +22,4 @@ class FabricaUser
 	
 		user.save!			
 	end
-
 end
